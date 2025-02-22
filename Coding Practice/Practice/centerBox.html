@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center Using Flexbox</title>
+
+    <style>
+        .cont{
+            border: 5px solid black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box{
+            border: 2px solid red;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box">Box</div>
+    </div>
+</body>
+</html> 
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center Using Grid</title>
+
+    <style>
+        .cont{
+            display: grid;
+            place-content: center;
+            border: 5px solid black;
+            height: 100vh;
+        }
+
+        .box{
+            border: 2px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box">Box</div>
+    </div>
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center Using Positioning</title>
+
+    <style>
+        .cont{
+            position: relative;
+            border: 5px solid black;
+            height: 100vh;
+        }
+
+        .box{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box">Box</div>
+    </div>
+</body>
+</html> -->

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO-LIST</title>
+
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        padding: 5px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <input type="text" placeholder="Write Todo Here" />
+      <select name="" id="">
+        <option value="priority" disabled selected>Priority</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button>Add Todo</button>
+    </div>
+
+    <table class="table-cont">
+      <thead>
+        <th>S.No</th>
+        <th>Todo-Name</th>
+        <th>Priority</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <!-- Add Todos Here -->
+      </tbody>
+    </table>
+
+    <script>
+      const input = document.querySelector('#container>input');
+      const priority = document.querySelector('#container>select');
+      const todoBtn = document.querySelector('#container>button');
+      const tBody = document.querySelector('.table-cont>tbody');
+
+      var todos = [];
+
+      var handleClick = () => {
+        if (!input.value || priority.value === 'priority') {
+          return alert('Please fill in all fields');
+        }
+
+        var obj = {
+          title: input.value,
+          priority: priority.value,
+        };
+
+        todos.push(obj);
+        saveData();
+        showData(todos);
+
+        input.value = '';
+        priority.value = 'priority';
+      };
+
+      var saveData = () => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+      };
+
+      var loadData = () => {
+        var storedValue = JSON.parse(localStorage.getItem('todos'));
+        if (storedValue) {
+          todos = storedValue;
+          showData(todos);
+        } else {
+          todos = [];
+        }
+      };
+
+      var showData = (arr) => {
+        tBody.innerHTML = '';
+
+        arr.forEach((ele, index) => {
+          var row = document.createElement('tr');
+
+          var td1 = document.createElement('td');
+          td1.innerHTML = index + 1;
+
+          var td2 = document.createElement('td');
+          td2.innerHTML = ele.title;
+
+          var td3 = document.createElement('td');
+          td3.innerHTML = ele.priority;
+          td3.style.backgroundColor =
+            ele.priority === 'high' ? 'red' : ele.priority === 'medium' ? 'green' : 'teal';
+
+          var td4 = document.createElement('td');
+          var deleteBtn = document.createElement('button');
+          deleteBtn.innerHTML = 'Delete';
+          deleteBtn.style.backgroundColor = 'red'
+          deleteBtn.addEventListener('click', () => {
+            handleDelete(index);
+          });
+          td4.appendChild(deleteBtn);
+
+          row.append(td1, td2, td3, td4);
+          tBody.appendChild(row);
+        });
+      };
+
+      var handleDelete = (index) => {
+        todos.splice(index, 1);
+        saveData();
+        showData(todos);
+      };
+
+      todoBtn.addEventListener('click', handleClick);
+
+      loadData();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" onclick="bell()">Bell</button>
+    <!--  -->
+
+    <h1 id="display">Click to continue</h1>
+    <button onclick="login()">login</button>
+    <button onclick="logout()">logout</button>
+
+    <img onclick="scam()" src="https://miro.medium.com/max/1400/1*mdcu3Ku9r44HMtraHUqu5g.jpeg" alt="">
+
+    <h1 class="display">Click me</h1>
+    <button id="red" onClick="changeRed()">Change Text color to red</button>
+</body>
+</html>
+
+<script>
+    var btn = document.getElementById('btn')
+    var bell = ()=>{
+        alert('please open the door')
+    }
+    //
+
+
+    var login = ()=>{
+        document.querySelector('#display').innerText = 'login success'
+    }
+    var logout = ()=>{
+        document.getElementById('display').textContent = 'logout success'
+    }
+
+    document.querySelector('img').value
+    function scam(){
+        alert('this is a scam ')
+    }
+
+
+    function changeRed(){
+        document.querySelector('.display').style.color = 'red'
+    }
+</script>

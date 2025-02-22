@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-2</title>
+
+    <style>
+        .card-img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .card{
+            border: 5px dashed gray;
+            padding: 10px;
+            margin: 10px;
+            width: 210px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>
+
+<script>
+    // Root Container
+    const container = document.querySelector('#root')
+
+    // Card
+    var card = document.createElement('div')
+    card.setAttribute('class', 'card')
+
+    // Image
+    var img = document.createElement('img')
+    img.src = 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/n/9/-original-imah8ffza3kjyhwp.jpeg?q=70'
+    img.setAttribute('class', 'card-img')
+
+    // Title
+    var title = document.createElement('h2')
+    title.textContent = "Realme 14 Pro+"
+
+    // Price
+    var price = document.createElement('h4')
+    price.innerText = '₹ 31,999'
+
+    // color
+    var color = document.createElement('p')
+    color.innerText = `Color : Black`
+    
+
+    card.append(img, title, price, color)
+    container.append(card)
+</script>

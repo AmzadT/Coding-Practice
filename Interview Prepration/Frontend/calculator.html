@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+
+    <style>
+      #main {
+        height: 440px;
+        width: 30%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        margin: auto;
+        padding-top: 50px;
+        margin-top: 40px;
+      }
+
+      #display {
+        width: 75%;
+        height: 50px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        margin: auto;
+        border-radius: 5px;
+        cursor: text;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+      }
+
+      #digits-box {
+        width: 75%;
+        height: 330px;
+        margin: auto;
+        margin-top: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 65px);
+        display: grid;
+        gap: 10px;
+        padding-top: 10px;
+        cursor: pointer;
+      }
+
+      #digits-box > div {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      .black {
+        background-color: black;
+        color: white;
+      }
+      .black:hover {
+        background-color: white;
+        color: black;
+      }
+
+      .red {
+        background-color: orangered;
+        color: white;
+      }
+      .red:hover {
+        background-color: red;
+      }
+
+      .number:hover {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="display"></div>
+      <div id="digits-box">
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="black">+</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="black">-</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+        <div class="black">*</div>
+        <div class="red">C</div>
+        <div class="number">0</div>
+        <div class="black">=</div>
+        <div class="black">/</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+    var keyboard = document.querySelectorAll("#digits-box > div");
+    var str = document.querySelector("#display");
+    
+    for (var i = 0; i < keyboard.length; i++) {
+      keyboard[i].addEventListener("click", calculator);
+    }
+    
+    function calculator(event) {  // Added event parameter
+      var result = event.target.innerText;
+    
+      switch (result) {
+        case "C":
+          str.innerText = "";
+          break;
+        case "=":
+          if (str.innerText.trim() !== "") {
+            try {
+              str.innerText = eval(str.innerText); // Evaluates the expression
+            } catch {
+              str.innerText = "Error"; // Handles invalid expressions
+            }
+          }
+          break;
+        default:
+          str.innerText += result;
+      }
+    }
+    
+</script>

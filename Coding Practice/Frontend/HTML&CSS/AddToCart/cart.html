@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: cornflowerblue;
+            color: white;
+            padding: 0px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-count {
+            background-color: orangered;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 1em;
+            margin-left: 10px;
+        }
+        .cart-container {
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+        }
+        .cart-item div {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .cart-item button {
+            padding: 5px 10px;
+            background-color: orangered;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .cart-item button:hover {
+            background-color: red;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-controls button {
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+        .total-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .back-button {
+            margin-top: 0px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        #total-amount{
+            color: darkslateblue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Cart</h1>
+        <div>
+            <button onclick="goBack()" class="back-button">Back to Products</button>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </div>
+    <div class="cart-container">
+        <div id="cart-items"></div>
+        <div class="total-container">
+            Total Amount: $<span id="total-amount">0</span>
+        </div>
+    </div>
+    <script src="cart.js"></script>
+</body>
+</html>

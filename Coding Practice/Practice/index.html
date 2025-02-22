@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <div id="cont">
+        <h1>Hello World</h1>
+        <img src="" alt="">
+        <a href=""></a>
+    </div>
+</body>
+</html>
+
+<script>
+   const head = document.querySelector('h1')
+   head.style.color = 'green'
+   head.textContent = 'Amzad'
+   head.innerText = 'Amzad Hussain'
+   head.setAttribute('class', 'head')
+   head.style.fontSize = '50px'
+   head.style.textAlign = 'center'
+
+   const link = document.querySelector('a')
+   link.href = 'https://www.google.com'
+   link.textContent = 'Google'
+   
+
+   const img = document.querySelector('img')
+   img.src = 'https://cdn-icons-png.flaticon.com/512/1170/1170678.png'
+
+</script>

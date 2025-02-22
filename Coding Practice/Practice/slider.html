@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+
+    <style>
+      /* styles.css */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+
+      .slider {
+        position: relative;
+        width: 80%;
+        max-width: 800px;
+        overflow: hidden;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slides img {
+        width: 100%;
+        height: 400px;
+        flex-shrink: 0;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 15px 20px;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 50%;
+      }
+
+      button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .prev {
+        left: 10px;
+      }
+
+      .next {
+        right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slider">
+      <div class="slides">
+        <img src="https://cdn.pixabay.com/photo/2023/05/23/18/12/hummingbird-8013214_640.jpg" alt="Image 1" />
+        <img src="https://cdn.pixabay.com/photo/2023/10/19/21/08/ai-generated-8327632_640.jpg" alt="Image 2" />
+        <img src="https://cdn.pixabay.com/photo/2016/12/17/18/51/spices-1914130_640.jpg" alt="Image 3" />
+        <img src="https://cdn.pixabay.com/photo/2024/01/27/18/24/squirrel-8536537_640.jpg" alt="Image 4" />
+        <img src="https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_640.jpg" alt="Image 5" />
+        <img src="https://cdn.pixabay.com/photo/2023/07/04/09/04/leaves-8105722_640.jpg" alt="Image 6" />
+        <img src="https://cdn.pixabay.com/photo/2023/08/26/17/49/dahlias-8215514_640.jpg" alt="Image 7" />
+        <img src="https://cdn.pixabay.com/photo/2023/05/26/19/16/grass-8020116_640.jpg" alt="Image 8" />
+        <img src="https://cdn.pixabay.com/photo/2017/07/16/09/11/road-2508733_640.jpg" alt="Image 9" />
+        <img src="https://cdn.pixabay.com/photo/2023/04/19/12/50/flowers-7937665_640.jpg" alt="Image 10" />
+      </div>
+      
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  // script.js
+  const slides = document.querySelector(".slides");
+  const images = document.querySelectorAll(".slides img");
+  const prevButton = document.querySelector(".prev");
+  const nextButton = document.querySelector(".next");
+
+  let currentIndex = 0;
+  const totalImages = images.length;
+
+  const updateSlider = () => {
+    const slideWidth = images[0].clientWidth;
+    slides.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+  };
+
+  nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % totalImages; // Loop back to the start
+    updateSlider();
+  });
+
+  prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Loop back to the end
+    updateSlider();
+  });
+
+  // Ensure slider adjusts on window resize
+  window.addEventListener("resize", updateSlider);
+</script>
